@@ -1,17 +1,23 @@
 {
+  "id": "./",
   "name": "ChromaFlow — Generative Flow Lab",
   "short_name": "ChromaFlow",
-  "description": "Generative Flow Lab",
+  "description": "Generatives Flow-Labor für interaktive Kunst und Partikelsimulationen.",
+  "lang": "de",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
   "background_color": "#05060d",
   "theme_color": "#05060d",
   "icons": [
     {
-      "src": "./assets/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png",
+      "src": "./logo.jpg",
+      "sizes": "320x320",
+      "type": "image/jpeg",
       "purpose": "any"
     }
   ]
