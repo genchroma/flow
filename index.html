@@ -2828,7 +2828,7 @@ html:not(.cf-authenticated) body > :not(#cfAuthGate){display:none!important}#cfA
         `    }`,
         `    loop();`,
         `  ` + closeScript,
-        `  <div id="cfAuthGate" class="is-visible" aria-hidden="false"></div>
+        `  <div id="cfAuthGate" class="is-visible" aria-hidden="false"><section class="cf-auth-card" role="dialog" aria-modal="true" aria-labelledby="cfAuthTitle"><div class="cf-auth-brand"><img src="./logo.jpg" alt="ChromaFlow Logo"><div><strong>ChromaFlow</strong><span>Generative Flow Lab</span></div></div><h1 id="cfAuthTitle">Willkommen zurück</h1><p id="cfAuthDescription">Melde dich an, um ChromaFlow zu öffnen und deine gespeicherten Arbeiten zu laden.</p><form id="cfAuthForm"><input id="cfAuthEmail" type="email" placeholder="E-Mail-Adresse" aria-label="E-Mail-Adresse" autocomplete="email" required><input id="cfAuthPassword" type="password" placeholder="Passwort" aria-label="Passwort" autocomplete="current-password" minlength="6" required><div class="cf-auth-actions"><button id="cfAuthPrimary" class="btn-neon is-primary cf-auth-primary" type="submit">Anmelden</button><button id="cfAuthSecondary" class="chip-btn" type="button">Konto erstellen</button></div></form><div class="cf-auth-links"><button type="button" id="cfAuthForgot">Passwort vergessen?</button></div><div id="cfAuthMessage" role="status" aria-live="polite"></div></section></div>
 </body>`,
         `</html>`
       ].join('\n');
