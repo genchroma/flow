@@ -3400,7 +3400,9 @@ export function ChromaFlowCanvas() {
       return j;
     }
     function cfCreds() {
-      const e = (document.getElementById('cfEmail').value || '').trim(), p = document.getElementById('cfPass').value || '';
+      const emailField = document.getElementById('cfAuthEmail') || document.getElementById('cfEmail');
+      const passField = document.getElementById('cfAuthPassword') || document.getElementById('cfPass');
+      const e = (emailField && emailField.value || '').trim(), p = passField && passField.value || '';
       if (!e || p.length < 6) throw new Error('E-Mail und Passwort (mind. 6 Zeichen) eingeben');
       return [e, p];
     }
