@@ -3376,7 +3376,13 @@ export function ChromaFlowCanvas() {
       window.cfSupabase = client;
       client.auth.onAuthStateChange(function (event, session) {
         cfStore(session);
+        if (event === 'PASSWORD_RECOVERY') {
+          cfPasswordRecovery = true;
+          cfSetGate(true);
+          if (document.getElementById('cfAuthGate')) { cfRenderAuthGate(); cfAuthMode('recovery'); }
+        }
         if (event === 'SIGNED_OUT') {
+          cfPasswordRecovery = false;
           cfSetGate(true);
           renderAccount();
         }
@@ -3384,6 +3390,7 @@ export function ChromaFlowCanvas() {
       return client;
     })();
     let cfSess = null;
+    let cfPasswordRecovery = false;
     function cfStore(session) {
       cfSess = session && session.access_token ? {
         access_token: session.access_token,
@@ -3460,6 +3467,20 @@ export function ChromaFlowCanvas() {
         const { error } = await client.auth.resetPasswordForEmail(email, { redirectTo: location.origin + location.pathname });
         if (error) throw error;
         cfAuthMessage('Der Link zum Zurücksetzen wurde per E-Mail gesendet.');
+      } catch (e) { cfAuthMessage(e.message, true); }
+    }
+    async function cfUpdatePassword() {
+      const password = (document.getElementById('cfAuthPassword') || {}).value || '';
+      if (password.length < 6) { cfAuthMessage('Das neue Passwort muss mindestens 6 Zeichen lang sein.', true); return; }
+      try {
+        const client = await window.cfSupabaseReady;
+        const { error } = await client.auth.updateUser({ password });
+        if (error) throw error;
+        cfPasswordRecovery = false;
+        cfAuthMessage('Passwort erfolgreich geändert. Du kannst dich jetzt anmelden.');
+        await client.auth.signOut();
+        cfStore(null); renderAccount(); cfSetGate(true); cfAuthMode('signin');
+        cfAuthMessage('Passwort erfolgreich geändert. Du kannst dich jetzt anmelden.');
       } catch (e) { cfAuthMessage(e.message, true); }
     }
     async function cfSignOut() {
@@ -3619,15 +3640,19 @@ export function ChromaFlowCanvas() {
     let cfAuthRedirectError = '';
     function cfAuthMessage(message,isError){const el=document.getElementById('cfAuthMessage');if(el){el.textContent=message||'';el.classList.toggle('is-error',!!isError);}}
     function cfSetGate(required){const gate=document.getElementById('cfAuthGate');document.documentElement.classList.toggle('cf-authenticated',!required);if(!gate)return;gate.classList.toggle('is-visible',!!required);gate.setAttribute('aria-hidden',required?'false':'true');document.body.style.overflow=required?'hidden':'';}
-    function cfAuthMode(mode){const signup=mode==='signup',title=document.getElementById('cfAuthTitle'),desc=document.getElementById('cfAuthDescription'),pass=document.getElementById('cfAuthPassword'),primary=document.getElementById('cfAuthPrimary'),secondary=document.getElementById('cfAuthSecondary');if(title)title.textContent=signup?'Konto erstellen':'Willkommen zurück';if(desc)desc.textContent=signup?'Erstelle ein Konto, um ChromaFlow zu nutzen und deine Arbeiten sicher zu speichern.':'Melde dich an, um ChromaFlow zu öffnen und deine gespeicherten Arbeiten zu laden.';if(pass)pass.autocomplete=signup?'new-password':'current-password';if(primary)primary.textContent=signup?'Konto erstellen':'Anmelden';if(secondary){secondary.textContent=signup?'Zur Anmeldung':'Konto erstellen';secondary.onclick=function(){cfAuthMode(signup?'signin':'signup');};}cfAuthMessage('');}
-    function cfRenderAuthGate(){const gate=document.getElementById('cfAuthGate');if(!gate)return;gate.innerHTML='<section class="cf-auth-card" role="dialog" aria-modal="true" aria-labelledby="cfAuthTitle"><div class="cf-auth-brand"><img src="./logo.jpg" alt="ChromaFlow Logo"><div><h2 class="brand-title">Chroma<span class="brand-accent">Flow</span></h2><span>Generative Flow Lab</span></div></div><h1 id="cfAuthTitle">Willkommen zurück</h1><p id="cfAuthDescription">Melde dich an, um ChromaFlow zu öffnen.</p><form id="cfAuthForm"><input id="cfAuthEmail" type="email" placeholder="E-Mail-Adresse" aria-label="E-Mail-Adresse" autocomplete="email" required><input id="cfAuthPassword" type="password" placeholder="Passwort (mindestens 6 Zeichen)" aria-label="Passwort" autocomplete="current-password" minlength="6" required><div class="cf-auth-actions"><button id="cfAuthPrimary" class="btn-neon is-primary cf-auth-primary" type="submit">Anmelden</button><button id="cfAuthSecondary" class="chip-btn" type="button">Konto erstellen</button></div></form><div class="cf-auth-links"><button type="button" id="cfAuthForgot">Passwort vergessen?</button></div><div id="cfAuthMessage" role="status" aria-live="polite"></div></section>';document.getElementById('cfAuthForm').addEventListener('submit',function(e){e.preventDefault();const email=document.getElementById('cfAuthEmail').value.trim(),password=document.getElementById('cfAuthPassword').value;if(!email||password.length<6){cfAuthMessage('Bitte E-Mail und Passwort mit mindestens 6 Zeichen eingeben.',true);return;}const a=document.getElementById('cfEmail'),p=document.getElementById('cfPass');if(a)a.value=email;if(p)p.value=password;if(document.getElementById('cfAuthPrimary').textContent==='Konto erstellen')cfSignUp();else cfSignIn();});document.getElementById('cfAuthForgot').addEventListener('click',cfRecover);cfAuthMode('signin');}
+    function cfAuthMode(mode){const signup=mode==='signup',recovery=mode==='recovery',title=document.getElementById('cfAuthTitle'),desc=document.getElementById('cfAuthDescription'),pass=document.getElementById('cfAuthPassword'),primary=document.getElementById('cfAuthPrimary'),secondary=document.getElementById('cfAuthSecondary'),forgot=document.getElementById('cfAuthForgot');if(title)title.textContent=recovery?'Neues Passwort festlegen':signup?'Konto erstellen':'Willkommen zurück';if(desc)desc.textContent=recovery?'Gib ein neues Passwort mit mindestens 6 Zeichen ein.':signup?'Erstelle ein Konto, um ChromaFlow zu nutzen und deine Arbeiten sicher zu speichern.':'Melde dich an, um ChromaFlow zu öffnen und deine gespeicherten Arbeiten zu laden.';if(pass){pass.autocomplete=signup||recovery?'new-password':'current-password';pass.placeholder=recovery?'Neues Passwort (mindestens 6 Zeichen)':'Passwort (mindestens 6 Zeichen)';}if(primary)primary.textContent=recovery?'Passwort speichern':signup?'Konto erstellen':'Anmelden';if(secondary){secondary.style.display=recovery?'none':'';secondary.textContent=signup?'Zur Anmeldung':'Konto erstellen';secondary.onclick=function(){cfAuthMode(signup?'signin':'signup');};}if(forgot)forgot.style.display=recovery?'none':'';cfAuthMessage('');}
+    function cfRenderAuthGate(){const gate=document.getElementById('cfAuthGate');if(!gate)return;gate.innerHTML='<section class="cf-auth-card" role="dialog" aria-modal="true" aria-labelledby="cfAuthTitle"><div class="cf-auth-brand"><img src="./logo.jpg" alt="ChromaFlow Logo"><div><h2 class="brand-title">Chroma<span class="brand-accent">Flow</span></h2><span>Generative Flow Lab</span></div></div><h1 id="cfAuthTitle">Willkommen zurück</h1><p id="cfAuthDescription">Melde dich an, um ChromaFlow zu öffnen.</p><form id="cfAuthForm"><input id="cfAuthEmail" type="email" placeholder="E-Mail-Adresse" aria-label="E-Mail-Adresse" autocomplete="email" required><input id="cfAuthPassword" type="password" placeholder="Passwort (mindestens 6 Zeichen)" aria-label="Passwort" autocomplete="current-password" minlength="6" required><div class="cf-auth-actions"><button id="cfAuthPrimary" class="btn-neon is-primary cf-auth-primary" type="submit">Anmelden</button><button id="cfAuthSecondary" class="chip-btn" type="button">Konto erstellen</button></div></form><div class="cf-auth-links"><button type="button" id="cfAuthForgot">Passwort vergessen?</button></div><div id="cfAuthMessage" role="status" aria-live="polite"></div></section>';document.getElementById('cfAuthForm').addEventListener('submit',function(e){e.preventDefault();const email=document.getElementById('cfAuthEmail').value.trim(),password=document.getElementById('cfAuthPassword').value;if(!email||password.length<6){cfAuthMessage('Bitte E-Mail und Passwort mit mindestens 6 Zeichen eingeben.',true);return;}const a=document.getElementById('cfEmail'),p=document.getElementById('cfPass');if(a)a.value=email;if(p)p.value=password;if(cfPasswordRecovery)cfUpdatePassword();else if(document.getElementById('cfAuthPrimary').textContent==='Konto erstellen')cfSignUp();else cfSignIn();});document.getElementById('cfAuthForgot').addEventListener('click',cfRecover);cfAuthMode('signin');}
     async function cfInitAuth(){
       try {
         const client = await window.cfSupabaseReady;
         const { data, error } = await client.auth.getSession();
         if (error) throw error;
         cfStore(data.session);
-        if (cfSess && cfSess.user && cfSess.user.id) {
+        const recoveryHash = new URLSearchParams(location.hash.slice(1)).get('type') === 'recovery';
+        if (cfPasswordRecovery || recoveryHash) {
+          cfPasswordRecovery = true;
+          renderAccount(); cfSetGate(true); cfAuthMode('recovery');
+        } else if (cfSess && cfSess.user && cfSess.user.id) {
           renderAccount(); cfSetGate(false);
           await cfSync();
         } else {
