@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
-  <link rel="manifest" href="./manifest.webmanifest">
-  <meta name="theme-color" content="#05060d">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="ChromaFlow">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#05060d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ChromaFlow">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" sizes="192x192" href="./icon-192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
   <meta name="artifact-type" content="tool">
   <meta name="design-style" content="neon_noir">
   <title>ChromaFlow — Generative Flow Lab</title>
-  <link rel="icon" type="image/png" sizes="512x512" href="./assets/chromaflow-icon-512.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
   <style>
@@ -1249,6 +1252,7 @@
     <header class="topbar">
       <div class="brand-group"><img class="brand-mark" src="data:image/jpeg;base64,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" alt=""><h1 class="brand-title">Chroma<span class="brand-accent">Flow</span></h1></div>
       <div class="quick-actions">
+        <button type="button" class="btn-neon" id="cfHeaderAccount" onclick="cfOpenAccount()" title="Konto öffnen"><i data-lucide="user-round" aria-hidden="true"></i><span class="btn-label-desktop" id="cfHeaderAccountLabel">Anmelden</span></button>
         <button type="button" class="btn-neon is-cyan" onclick="reseedSimulation()" title="Neu aussäen">
           <i data-lucide="sparkles" aria-hidden="true"></i>
           <span class="btn-label-desktop">Neu aussäen</span>
@@ -2404,6 +2408,7 @@
         if (secEl) secEl.classList.toggle('is-visible', active);
       });
 
+      saveStateDebounced();
       // Auto-open mobile sheet if minimized when user taps a category tab
       const ws = document.getElementById('workspace');
       if (ws && ws.classList.contains('sheet-minimized')) {
@@ -2415,6 +2420,7 @@
       const ws = document.getElementById('workspace');
       if (!ws) return;
       ws.classList.toggle('panel-collapsed');
+      cfQueueSaveAll();
       setTimeout(resizeCanvases, 240);
     }
 
@@ -2436,6 +2442,7 @@
       } else {
         if (lbl) lbl.textContent = `Parameter & Motoren`;
       }
+      cfQueueSaveAll();
       setTimeout(resizeCanvases, 240);
     }
 
@@ -2998,9 +3005,11 @@ export function ChromaFlowCanvas() {
        ========================================================================= */
     let saveTimeout = 0;
     function saveStateDebounced() {
+      if (cfCloudHydrating) return;
       clearTimeout(saveTimeout);
       saveTimeout = setTimeout(async function() {
-        try { const o = {}; ['engine','touchMode','colorCount','colors','activePreset','blendMode','colorMapping','particleCount','speed','acceleration','friction','particleSize','sizeVariance','pulseAmount','noiseScale','noiseFreq','maxLifetime','gravityStrength','interactionRadius','trailDecay','particleShape','glowIntensity','curlStrength','lorenzRho','lorenzRotSpeed','lissajousFx','lissajousFy','quantumSpin','nodes'].forEach(function(k) { o[k] = state[k]; }); localStorage.setItem('chromaflow:v2', JSON.stringify(o)); } catch (e) { /* ignore */ }
+        try { const o = snapshotState(); localStorage.setItem('chromaflow:v2', JSON.stringify(o)); if (!cfCloudHydrating) { const stamp = Date.now(); localStorage.setItem('chromaflow:stateUpdatedAt', String(stamp)); localStorage.setItem('chromaflow:localUpdatedAt', String(stamp)); } } catch (e) { /* ignore */ }
+        cfQueueSaveAll();
         if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === 'function') {
           try {
             await window.notebookAppApi.setAppState({
@@ -3125,6 +3134,7 @@ export function ChromaFlowCanvas() {
       }
 
       try { const sv = JSON.parse(localStorage.getItem('chromaflow:v2') || 'null'); if (sv) Object.keys(sv).forEach(function(k) { if (k in state) state[k] = sv[k]; }); } catch (e) { /* ignore */ }
+      if (cfSess) { try { await cfSync(); } catch (e) { /* lokale Daten bleiben offline verfügbar */ } }
       if (state.colorMapping === 'position') state.colorMapping = 'speed';
       resizeCanvases();
       syncAllControlsFromState();
@@ -3227,7 +3237,7 @@ export function ChromaFlowCanvas() {
     window.addEventListener('DOMContentLoaded', function() { idleLoop(); updateRangeFills(); setInterval(updateRangeFills, 300); });
 
     /* ===== v4: Kompositionen speichern & laden ===== */
-    const SAVE_KEYS = ['engine','touchMode','colorCount','colors','activePreset','blendMode','colorMapping','particleCount','speed','acceleration','friction','particleSize','sizeVariance','pulseAmount','noiseScale','noiseFreq','maxLifetime','gravityStrength','interactionRadius','trailDecay','particleShape','glowIntensity','curlStrength','lorenzRho','lorenzRotSpeed','lissajousFx','lissajousFy','quantumSpin','nodes'];
+    const SAVE_KEYS = ['engine','touchMode','addNodeMode','colorCount','colors','activePreset','blendMode','colorMapping','particleCount','speed','acceleration','friction','particleSize','sizeVariance','pulseAmount','noiseScale','noiseFreq','maxLifetime','gravityStrength','interactionRadius','trailDecay','particleShape','glowIntensity','curlStrength','lorenzRho','lorenzRotSpeed','lissajousFx','lissajousFy','quantumSpin','audioBand','nodes','panelTab','exportTab'];
     const SAVE_ENGINES = ['vector_field', 'lorenz', 'parametric', 'quantum_nodes'];
     function readSaves() { try { const a = JSON.parse(localStorage.getItem('chromaflow:saves') || '[]'); return Array.isArray(a) ? a : []; } catch (e) { return []; } }
     function writeSaves(list) { try { localStorage.setItem('chromaflow:saves', JSON.stringify(list)); return true; } catch (e) { showToast(`Speichern im Browser nicht möglich`, true); return false; } }
@@ -3246,7 +3256,7 @@ export function ChromaFlowCanvas() {
         const load = document.createElement('button'); load.type = 'button'; load.className = 'preset-btn'; load.textContent = it.name; load.title = 'Laden';
         load.onclick = function() { loadComposition(it.id); };
         const del = document.createElement('button'); del.type = 'button'; del.className = 'chip-btn save-del'; del.textContent = '×'; del.title = 'Löschen'; del.setAttribute('aria-label', 'Löschen: ' + it.name);
-        del.onclick = function() { writeSaves(readSaves().filter(function(x) { return x.id !== it.id; })); renderSaves(); cfDelete(it.name); };
+        del.onclick = function() { writeSaves(readSaves().filter(function(x) { return x.id !== it.id; })); cfMarkLocalChange(); renderSaves(); cfDelete(it.name); };
         row.appendChild(load); row.appendChild(del); box.appendChild(row);
       });
     }
@@ -3255,7 +3265,7 @@ export function ChromaFlowCanvas() {
       const name = (inp.value || '').trim() || `Komposition ${list.length + 1}`;
       const data = snapshotState(); const old = list.find(function(x) { return x.name === name; });
       if (old) { old.data = data; old.ts = Date.now(); } else { list.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), name: name, data: data, ts: Date.now() }); }
-      if (writeSaves(list)) { inp.value = ''; renderSaves(); cfUpsert(name, data); showToast(old ? `„${name}“ überschrieben` : `„${name}“ gespeichert`); }
+      if (writeSaves(list)) { cfMarkLocalChange(); inp.value = ''; renderSaves(); cfUpsert(name, data); showToast(old ? `„${name}“ überschrieben` : `„${name}“ gespeichert`); }
     }
     function loadComposition(id) {
       const it = readSaves().find(function(x) { return x.id === id; }); const d = it && cleanData(it.data);
@@ -3283,7 +3293,7 @@ export function ChromaFlowCanvas() {
             n++;
           });
           if (!n) throw new Error('leer');
-          writeSaves(list); renderSaves(); cfSync(); showToast(n === 1 ? `Als neue Komposition gespeichert` : `${n} neue Kompositionen gespeichert`);
+          writeSaves(list); cfMarkLocalChange(); renderSaves(); cfQueueSaveAll(); showToast(n === 1 ? `Als neue Komposition gespeichert` : `${n} neue Kompositionen gespeichert`);
         } catch (e) { showToast(`Datei ist keine gültige ChromaFlow-Sicherung`, true); }
       };
       r.readAsText(file);
@@ -3353,131 +3363,234 @@ export function ChromaFlowCanvas() {
       }
     });
 
-    /* ===== v7: Supabase-Konto & vollständige Cloud-Synchronisierung ===== */
-    // Publishable key: darf im Browser verwendet werden. Niemals einen service_role/secret key eintragen.
-    const CF_SUPABASE = Object.freeze({
-      url: 'https://zrtfcnmgvsppfdfhlcdp.supabase.co',
-      key: 'sb_publishable_seTvk_0R_F-DyxUSuauBsA_IFDRilMn'
-    });
-    let cfSess = null, cfCloudSaveTimer = null, cfCloudSaving = false, cfCloudSaveAgain = false;
-    function cfLoadSession() {
-      try { const saved = JSON.parse(localStorage.getItem('chromaflow:session') || 'null'); cfSess = saved && saved.access_token && saved.refresh_token && saved.user && saved.user.id ? saved : null; }
-      catch (e) { cfSess = null; }
-    }
+    /* ===== v6: Konto & Cloud (Supabase) ===== */
+    // Optional hier fest eintragen, sonst im Panel „Konto & Cloud“ eingeben (anon public key, niemals den service_role key!)
+    const CF_SUPABASE = { url: 'https://zrtfcnmgvsppfdfhlcdp.supabase.co', key: 'sb_publishable_seTvk_0R_F-DyxUSuauBsA_IFDRilMn' };
+    let cfSess = null;
+    function cfLoadSession() { try { cfSess = JSON.parse(localStorage.getItem('chromaflow:session') || 'null'); } catch (e) { cfSess = null; } }
     function cfStore(j) {
       try {
-        if (j && j.access_token && j.refresh_token && j.user && j.user.id) {
-          cfSess = { access_token:j.access_token, refresh_token:j.refresh_token, expires_at:j.expires_at || Math.floor(Date.now()/1000)+(j.expires_in||3600), user:{id:j.user.id,email:j.user.email} };
-          localStorage.setItem('chromaflow:session',JSON.stringify(cfSess));
-        } else { cfSess=null; localStorage.removeItem('chromaflow:session'); }
-      } catch(e) { /* storage unavailable */ }
+        if (j && j.access_token) {
+          cfSess = { access_token: j.access_token, refresh_token: j.refresh_token, expires_at: j.expires_at || Math.floor(Date.now() / 1000) + (j.expires_in || 3600), user: { id: j.user && j.user.id, email: j.user && j.user.email } };
+          localStorage.setItem('chromaflow:session', JSON.stringify(cfSess));
+        } else { cfSess = null; localStorage.removeItem('chromaflow:session'); }
+      } catch (e) { /* ignore */ }
+      cfUpdateHeaderAccount();
     }
-    function cfBaseUrl(){ return window.location.origin+window.location.pathname; }
-    async function cfRefresh(){
-      if(!cfSess||!cfSess.refresh_token) throw new Error('Sitzung abgelaufen. Bitte erneut anmelden.');
-      const r=await fetch(CF_SUPABASE.url+'/auth/v1/token?grant_type=refresh_token',{method:'POST',headers:{apikey:CF_SUPABASE.key,'Content-Type':'application/json'},body:JSON.stringify({refresh_token:cfSess.refresh_token})});
-      const j=await r.json().catch(()=>({}));
-      if(!r.ok||!j.access_token){cfStore(null);renderAccount();throw new Error(j.msg||j.error_description||'Sitzung abgelaufen. Bitte erneut anmelden.');}
-      cfStore(j);
+    function cfCfg() {
+      if (CF_SUPABASE.url && CF_SUPABASE.key) return { url: CF_SUPABASE.url.replace(/\/+$/, ''), key: CF_SUPABASE.key, fixed: true };
+      try { const c = JSON.parse(localStorage.getItem('chromaflow:sb') || 'null'); if (c && c.url && c.key) return { url: c.url.replace(/\/+$/, ''), key: c.key }; } catch (e) { /* ignore */ }
+      return null;
     }
-    async function sb(path,opt){
-      opt=opt||{};let token=CF_SUPABASE.key;
-      if(opt.auth!==false&&cfSess){if(!cfSess.expires_at||cfSess.expires_at-60<Date.now()/1000)await cfRefresh();if(!cfSess)throw new Error('Bitte erneut anmelden.');token=cfSess.access_token;}
-      const headers=Object.assign({apikey:CF_SUPABASE.key,Authorization:'Bearer '+token,'Content-Type':'application/json'},opt.headers||{});
-      const r=await fetch(CF_SUPABASE.url+path,{method:opt.method||'GET',headers:headers,body:opt.body!==undefined?JSON.stringify(opt.body):undefined});
-      const t=await r.text();let j=null;try{j=t?JSON.parse(t):null;}catch(e){}
-      if(!r.ok)throw new Error((j&&(j.msg||j.error_description||j.message||j.error))||('Supabase-Fehler '+r.status));
+    async function cfRefresh(c) {
+      try {
+        const r = await fetch(c.url + '/auth/v1/token?grant_type=refresh_token', { method: 'POST', headers: { apikey: c.key, 'Content-Type': 'application/json' }, body: JSON.stringify({ refresh_token: cfSess.refresh_token }) });
+        const j = await r.json(); if (!r.ok) throw new Error('refresh'); cfStore(j);
+      } catch (e) { cfStore(null); renderAccount(); }
+    }
+    async function sb(path, opt) {
+      const c = cfCfg(); if (!c) throw new Error('Supabase ist nicht verbunden'); opt = opt || {};
+      let tok = c.key;
+      if (opt.auth !== false && cfSess) { if (cfSess.expires_at - 60 < Date.now() / 1000) await cfRefresh(c); if (cfSess) tok = cfSess.access_token; }
+      const r = await fetch(c.url + path, { method: opt.method || 'GET', headers: Object.assign({ apikey: c.key, Authorization: 'Bearer ' + tok, 'Content-Type': 'application/json' }, opt.headers || {}), body: opt.body ? JSON.stringify(opt.body) : undefined });
+      const t = await r.text(); let j = null; try { j = t ? JSON.parse(t) : null; } catch (e) { /* ignore */ }
+      if (!r.ok) throw new Error((j && (j.msg || j.error_description || j.message || j.error)) || ('Fehler ' + r.status));
       return j;
     }
-    function cfCreds(){
-      const e=document.getElementById('cfEmail'),p=document.getElementById('cfPass');
-      const email=e?(e.value||'').trim():'',password=p?(p.value||''):'';
-      if(!email||password.length<6)throw new Error('Bitte E-Mail und ein Passwort mit mindestens 6 Zeichen eingeben.');
-      return [email,password];
+    function cfCreds() {
+      const e = (document.getElementById('cfEmail').value || '').trim(), p = document.getElementById('cfPass').value || '';
+      if (!e || p.length < 6) throw new Error('E-Mail und Passwort (mind. 6 Zeichen) eingeben');
+      return [e, p];
     }
-    async function cfSignIn(){
-      try{const c=cfCreds(),j=await sb('/auth/v1/token?grant_type=password',{method:'POST',auth:false,body:{email:c[0],password:c[1]}});cfStore(j);renderAccount();await cfSync({showMessage:true});}
-      catch(e){showToast(e.message,true);}
+    async function cfSignIn() {
+      try { const c = cfCreds(); cfStore(await sb('/auth/v1/token?grant_type=password', { method: 'POST', body: { email: c[0], password: c[1] }, auth: false })); renderAccount(); showToast(`Angemeldet`); await cfSync(); }
+      catch (e) { showToast(e.message, true); }
     }
-    async function cfSignUp(){
-      try{const c=cfCreds(),j=await sb('/auth/v1/signup?redirect_to='+encodeURIComponent(cfBaseUrl()),{method:'POST',auth:false,body:{email:c[0],password:c[1]}});
-        if(j&&j.access_token){cfStore(j);renderAccount();await cfSync({showMessage:true});}
-        else showToast('Registrierung erstellt. Bitte bestätige zuerst deine E-Mail und melde dich danach an.');
-      }catch(e){showToast(e.message,true);}
+    async function cfSignUp() {
+      try {
+        const c = cfCreds(); const j = await sb('/auth/v1/signup?redirect_to=' + encodeURIComponent(location.href.split('#')[0]), { method: 'POST', body: { email: c[0], password: c[1] }, auth: false });
+        if (j && j.access_token) { cfStore(j); renderAccount(); await cfSync(); } else { showToast(`Bitte bestätige deine E-Mail und melde dich dann an`); }
+      } catch (e) { showToast(e.message, true); }
     }
-    async function cfRecover(){
-      const e=document.getElementById('cfEmail'),email=e?(e.value||'').trim():'';
-      if(!email){showToast('Bitte zuerst deine E-Mail-Adresse eingeben.',true);return;}
-      try{await sb('/auth/v1/recover?redirect_to='+encodeURIComponent(cfBaseUrl()),{method:'POST',auth:false,body:{email}});showToast('Falls ein Konto existiert, wurde ein Link zum Zurücksetzen gesendet.');}
-      catch(x){showToast(x.message,true);}
+    async function cfRecover() {
+      const e = (document.getElementById('cfEmail').value || '').trim(); if (!e) { showToast(`Bitte zuerst die E-Mail eingeben`, true); return; }
+      try { await sb('/auth/v1/recover?redirect_to=' + encodeURIComponent(location.href.split('#')[0]), { method: 'POST', body: { email: e }, auth: false }); showToast(`Link zum Zurücksetzen wurde gesendet`); } catch (x) { showToast(x.message, true); }
     }
-    async function cfSignOut(){
-      if(cfCloudSaveTimer)clearTimeout(cfCloudSaveTimer);
-      try{if(cfSess)await sb('/auth/v1/logout',{method:'POST'});}catch(e){}
-      cfStore(null);cfCloudSaveAgain=false;renderAccount();showToast('Abgemeldet. Deine Cloud-Daten bleiben gespeichert.');
+    async function cfSignOut() { try { await sb('/auth/v1/logout', { method: 'POST' }); } catch (e) { /* ignore */ } cfStore(null); renderAccount(); showToast(`Abgemeldet`); }
+    function cfConnect() {
+      const u = (document.getElementById('cfUrl').value || '').trim(), k = (document.getElementById('cfKey').value || '').trim();
+      if (!/^https:\/\//.test(u) || k.length < 20) { showToast(`Bitte Project URL (https://…) und anon key eingeben`, true); return; }
+      try { localStorage.setItem('chromaflow:sb', JSON.stringify({ url: u, key: k })); } catch (e) { /* ignore */ }
+      renderAccount();
     }
-    function cfMarkLocalChange(){try{localStorage.setItem('chromaflow:localUpdatedAt',String(Date.now()));}catch(e){}}
-    function cfLocalChangeTime(){
-      let stamp=0;try{stamp=Number(localStorage.getItem('chromaflow:localUpdatedAt')||0);}catch(e){}
-      try{readSaves().forEach(x=>{stamp=Math.max(stamp,Number(x.ts)||0);});}catch(e){}
-      return stamp;
+    function cfDisconnect() { try { localStorage.removeItem('chromaflow:sb'); } catch (e) { /* ignore */ } cfStore(null); renderAccount(); }
+    function cfMarkLocalChange() {
+      try { localStorage.setItem('chromaflow:localUpdatedAt', String(Date.now())); } catch (e) { /* ignore */ }
     }
-    function cfCollectCloudData(){
-      let panelWidth=null;try{panelWidth=localStorage.getItem('chromaflow:panelw');}catch(e){}
-      return {version:1,state:snapshotState(),compositions:readSaves(),preferences:{panelWidth:panelWidth,autopilotOn:!!autopilotOn}};
+    function cfLocalPayload() {
+      let stateStamp = Number(localStorage.getItem('chromaflow:stateUpdatedAt') || 0);
+      if (!stateStamp) { stateStamp = Date.now(); try { localStorage.setItem('chromaflow:stateUpdatedAt', String(stateStamp)); } catch (e) { /* ignore */ } }
+      let panelWidth = null;
+      try { panelWidth = localStorage.getItem('chromaflow:panelw'); } catch (e) { /* ignore */ }
+      const ws = document.getElementById('workspace');
+      return {
+        version: 2,
+        state: snapshotState(),
+        compositions: readSaves(),
+        preferences: {
+          panelWidth: panelWidth,
+          panelCollapsed: !!(ws && ws.classList.contains('panel-collapsed')),
+          mobileSheetState: typeof mobileSheetState === 'number' ? mobileSheetState : 0,
+          autopilotOn: typeof autopilotOn === 'boolean' ? autopilotOn : true,
+          paused: !!paused
+        },
+        stateUpdatedAt: stateStamp,
+        updatedAt: new Date().toISOString()
+      };
     }
-    async function cfPersistCloudNow(){
-      if(!cfSess)return;
-      const timestamp=new Date().toISOString();
-      await sb('/rest/v1/user_data?on_conflict=user_id',{method:'POST',headers:{Prefer:'resolution=merge-duplicates,return=minimal'},body:{user_id:cfSess.user.id,data:cfCollectCloudData(),updated_at:timestamp}});
-      try{localStorage.setItem('chromaflow:localUpdatedAt',String(Date.parse(timestamp)));}catch(e){}
+    function cfQueueSaveAll() {
+      if (!cfSess || cfCloudHydrating) return;
+      clearTimeout(cfCloudSaveTimer);
+      cfCloudSaveTimer = setTimeout(function() {
+        cfCloudSaveInFlight = cfCloudSaveInFlight.then(cfSaveAllNow).catch(function(e) {
+          const now = Date.now();
+          if (now - cfCloudLastErrorAt > 15000) { showToast('Cloud-Speichern fehlgeschlagen: ' + e.message, true); cfCloudLastErrorAt = now; }
+        });
+      }, 650);
     }
-    function cfScheduleCloudSave(){
-      if(!cfSess)return;if(cfCloudSaveTimer)clearTimeout(cfCloudSaveTimer);
-      cfCloudSaveTimer=setTimeout(async function(){
-        cfCloudSaveTimer=null;if(!cfSess)return;if(cfCloudSaving){cfCloudSaveAgain=true;return;}cfCloudSaving=true;
-        try{await cfPersistCloudNow();}catch(e){showToast('Cloud-Speichern fehlgeschlagen: '+e.message,true);}
-        finally{cfCloudSaving=false;if(cfCloudSaveAgain){cfCloudSaveAgain=false;cfScheduleCloudSave();}}
-      },850);
+    async function cfFlushSaveAll() {
+      clearTimeout(cfCloudSaveTimer);
+      if (!cfSess) return;
+      cfCloudSaveInFlight = cfCloudSaveInFlight.then(cfSaveAllNow);
+      return cfCloudSaveInFlight;
     }
-    function cfApplyCloudData(d,ts){
-      if(!d||typeof d!=='object')return;
-      const remoteState=cleanData(d.state);
-      if(remoteState){Object.assign(state,remoteState);try{localStorage.setItem('chromaflow:v2',JSON.stringify(snapshotState()));}catch(e){}}
-      if(Array.isArray(d.compositions)){
-        const items=d.compositions.map((x,i)=>{const cleaned=cleanData(x&&x.data);if(!cleaned)return null;return{id:String(x.id||('cloud-'+i)),name:String(x.name||('Komposition '+(i+1))).slice(0,40),data:cleaned,ts:Number(x.ts)||ts||Date.now()};}).filter(Boolean);
-        try{localStorage.setItem('chromaflow:saves',JSON.stringify(items));}catch(e){}
+    async function cfSaveAllNow() {
+      if (!cfSess || cfCloudHydrating) return;
+      await sb('/rest/v1/user_data?on_conflict=user_id', {
+        method: 'POST',
+        headers: { Prefer: 'resolution=merge-duplicates,return=minimal' },
+        body: { user_id: cfSess.user.id, data: cfLocalPayload(), updated_at: new Date().toISOString() }
+      });
+    }
+    function cfMergeCompositions(localItems, cloudItems) {
+      const merged = new Map();
+      (Array.isArray(cloudItems) ? cloudItems : []).forEach(function(it) {
+        const d = cleanData(it && it.data), name = String(it && it.name || '').trim();
+        if (d && name) merged.set(name, Object.assign({}, it, { name: name, data: d, ts: Number(it.ts) || 0 }));
+      });
+      (Array.isArray(localItems) ? localItems : []).forEach(function(it) {
+        const d = cleanData(it && it.data), name = String(it && it.name || '').trim();
+        if (!d || !name) return;
+        const prior = merged.get(name);
+        if (!prior || (Number(it.ts) || 0) >= (Number(prior.ts) || 0))
+          merged.set(name, Object.assign({}, it, { name: name, data: d, ts: Number(it.ts) || Date.now() }));
+      });
+      return Array.from(merged.values()).sort(function(a,b) { return (b.ts || 0) - (a.ts || 0); });
+    }
+    let cfCloudHydrating = false, cfCloudSaveTimer = 0, cfCloudSaveInFlight = Promise.resolve(), cfCloudLastErrorAt = 0;
+    async function cfSync() {
+      if (!cfSess) return;
+      const rows = await sb('/rest/v1/user_data?select=data,updated_at&user_id=eq.' + encodeURIComponent(cfSess.user.id) + '&limit=1');
+      if (!Array.isArray(rows) || !rows.length) {
+        await cfSaveAllNow();
+        renderSaves();
+        return;
       }
-      const p=d.preferences&&typeof d.preferences==='object'?d.preferences:{};
-      if(p.panelWidth){const w=Number(p.panelWidth);if(Number.isFinite(w)&&w>=320&&w<=1200){try{localStorage.setItem('chromaflow:panelw',String(Math.round(w)));}catch(e){}const ws=document.getElementById('workspace');if(ws)ws.style.setProperty('--panel-w',Math.round(w)+'px');}}
-      if(typeof p.autopilotOn==='boolean'){autopilotOn=p.autopilotOn;const b=document.getElementById('btnAuto');if(b)b.classList.toggle('active-mode',autopilotOn);}
-      if(remoteState){seedNoise();syncAllControlsFromState();clearCanvasFlag=true;initAllParticles();}
-      renderSaves();try{localStorage.setItem('chromaflow:localUpdatedAt',String(ts||Date.now()));}catch(e){}
+      const row = rows[0], cloud = row.data && typeof row.data === 'object' ? row.data : {};
+      const cloudUpdatedAt = Date.parse(row.updated_at) || 0;
+      const cloudStateUpdatedAt = Number(cloud.stateUpdatedAt) || cloudUpdatedAt;
+      const localStateUpdatedAt = Number(localStorage.getItem('chromaflow:stateUpdatedAt') || 0);
+      const localStateIsNewer = localStateUpdatedAt > cloudStateUpdatedAt;
+      let shouldUpload = localStateIsNewer || !cloud.state || !cleanData(cloud.state);
+      cfCloudHydrating = true;
+      try {
+        if (!localStateIsNewer && cloud.state) {
+          const d = cleanData(cloud.state);
+          if (d) {
+            Object.assign(state, d);
+            localStorage.setItem('chromaflow:stateUpdatedAt', String(cloudStateUpdatedAt));
+            localStorage.setItem('chromaflow:v2', JSON.stringify(snapshotState()));
+          }
+        }
+        const cloudItems = Array.isArray(cloud.compositions) ? cloud.compositions : [];
+        const mergedItems = cfMergeCompositions(readSaves(), cloudItems);
+        const normalize = function(items) {
+          return items.map(function(it) { return { name: it.name, ts: Number(it.ts) || 0, data: cleanData(it.data) }; })
+            .sort(function(a,b) { return a.name.localeCompare(b.name); });
+        };
+        if (JSON.stringify(normalize(mergedItems)) !== JSON.stringify(normalize(cloudItems.filter(function(it) { return cleanData(it && it.data); }))))
+          shouldUpload = true;
+        writeSaves(mergedItems);
+        if (cloud.preferences) {
+          if (cloud.preferences.panelWidth) localStorage.setItem('chromaflow:panelw', String(cloud.preferences.panelWidth));
+          const ws = document.getElementById('workspace');
+          if (ws) ws.classList.toggle('panel-collapsed', !!cloud.preferences.panelCollapsed);
+          if (typeof cloud.preferences.mobileSheetState === 'number') {
+            mobileSheetState = Math.max(0, Math.min(2, cloud.preferences.mobileSheetState));
+            if (ws) {
+              ws.classList.remove('sheet-expanded', 'sheet-minimized');
+              if (mobileSheetState === 1) ws.classList.add('sheet-expanded');
+              if (mobileSheetState === 2) ws.classList.add('sheet-minimized');
+            }
+          }
+          if (typeof cloud.preferences.autopilotOn === 'boolean') {
+            autopilotOn = cloud.preferences.autopilotOn;
+            const auto = document.getElementById('btnAuto');
+            if (auto) auto.classList.toggle('active-mode', autopilotOn);
+          }
+          if (typeof cloud.preferences.paused === 'boolean') {
+            paused = cloud.preferences.paused;
+            const label = document.getElementById('pauseLabel'), btn = document.getElementById('btnPause');
+            if (label) label.textContent = paused ? 'Weiter' : 'Pause';
+            if (btn) btn.classList.toggle('active-mode', paused);
+          }
+        }
+        renderSaves();
+        if (typeof syncAllControlsFromState === 'function') {
+          syncAllControlsFromState();
+          seedNoise(); initAllParticles(); clearCanvasFlag = true;
+        }
+      } finally { cfCloudHydrating = false; }
+      if (shouldUpload) await cfSaveAllNow();
+      localStorage.setItem('chromaflow:localUpdatedAt', String(Math.max(Number(localStorage.getItem('chromaflow:localUpdatedAt') || 0), cloudUpdatedAt)));
     }
-    async function cfSync(options){
-      if(!cfSess)return;options=options||{};
-      try{
-        const rows=await sb('/rest/v1/user_data?select=data,updated_at&user_id=eq.'+encodeURIComponent(cfSess.user.id)+'&limit=1');
-        const row=Array.isArray(rows)&&rows.length?rows[0]:null;
-        if(!row){await cfPersistCloudNow();if(options.showMessage)showToast('Konto verbunden. Deine bisherigen Einstellungen und Kompositionen wurden in der Cloud gespeichert.');return;}
-        const cloudTime=Date.parse(row.updated_at)||0,localTime=cfLocalChangeTime();
-        if(localTime>cloudTime+1000){await cfPersistCloudNow();if(options.showMessage)showToast('Deine aktuellen lokalen Daten wurden mit der Cloud synchronisiert.');}
-        else{cfApplyCloudData(row.data,cloudTime);if(options.showMessage)showToast('Cloud-Daten geladen und synchronisiert.');}
-      }catch(e){showToast('Synchronisieren fehlgeschlagen: '+e.message,true);}
-    }
-    function cfUpsert(){cfScheduleCloudSave();}
-    function cfDelete(){cfScheduleCloudSave();}
-    function renderAccount(){
-      const b=document.getElementById('cfAccount');if(!b)return;b.textContent='';
-      if(!cfSess){
-        b.insertAdjacentHTML('beforeend','<p class="cf-note">Melde dich mit deinem Konto an. Deine Einstellungen und gespeicherten Kompositionen werden automatisch über Supabase gesichert und auf deinen Geräten synchronisiert.</p><input class="neon-select" id="cfEmail" type="email" placeholder="E-Mail-Adresse" aria-label="E-Mail-Adresse" autocomplete="email" inputmode="email"><input class="neon-select" id="cfPass" type="password" placeholder="Passwort (mind. 6 Zeichen)" aria-label="Passwort" autocomplete="current-password" minlength="6"><div class="save-row"><button type="button" class="btn-neon is-primary" onclick="cfSignIn()">Anmelden</button><button type="button" class="chip-btn" onclick="cfSignUp()">Registrieren</button><button type="button" class="chip-btn" onclick="cfRecover()">Passwort vergessen</button></div><p class="cf-note">Bei einer neuen Registrierung musst du gegebenenfalls zuerst deine E-Mail-Adresse bestätigen.</p>');
-        const p=document.getElementById('cfPass');if(p)p.addEventListener('keydown',e=>{if(e.key==='Enter')cfSignIn();});
-      }else{
-        b.insertAdjacentHTML('beforeend','<p class="cf-note">Angemeldet als <strong id="cfWho"></strong><br>Automatische Cloud-Sicherung ist aktiv.</p><div class="save-row"><button type="button" class="btn-neon is-primary" onclick="cfSync({showMessage:true})">Jetzt synchronisieren</button><button type="button" class="chip-btn" onclick="cfSignOut()">Abmelden</button></div>');
-        const w=document.getElementById('cfWho');if(w)w.textContent=String(cfSess.user.email||'');
+    function cfUpsert(_name, _data) { cfQueueSaveAll(); }
+    function cfDelete(_name) { cfQueueSaveAll(); }
+    function cfUpdateHeaderAccount() {
+      const label = document.getElementById('cfHeaderAccountLabel');
+      const button = document.getElementById('cfHeaderAccount');
+      if (label) label.textContent = cfSess ? 'Konto' : 'Anmelden';
+      if (button) {
+        button.title = cfSess ? ('Angemeldet als ' + (cfSess.user.email || '')) : 'Anmelden oder Konto erstellen';
+        button.classList.toggle('is-primary', !cfSess);
       }
+      if (window.lucide) window.lucide.createIcons();
     }
-    window.addEventListener('DOMContentLoaded',async function(){cfLoadSession();renderAccount();await bootstrap();if(cfSess){renderAccount();await cfSync({showMessage:false});}});
+    function cfOpenAccount() {
+      const ws = document.getElementById('workspace'), target = document.getElementById('cfAccount');
+      const body = document.querySelector('.panel-body');
+      if (ws) ws.classList.remove('panel-collapsed', 'sheet-minimized');
+      if (typeof switchPanelTab === 'function') switchPanelTab('engines');
+      setTimeout(function() {
+        if (body && target) body.scrollTo({ top: Math.max(0, target.offsetTop - body.offsetTop - 12), behavior: 'smooth' });
+        else if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 80);
+    }
+    function renderAccount() {
+      const b = document.getElementById('cfAccount'); if (!b) return; const c = cfCfg(); b.textContent = '';
+      if (!c) {
+        b.insertAdjacentHTML('beforeend', '<p class="cf-note">Verbinde dein Supabase-Projekt: Project URL und anon public key findest du unter Project Settings → API.</p><input class="neon-select" id="cfUrl" type="url" placeholder="https://dein-projekt.supabase.co" aria-label="Project URL" autocomplete="off"><input class="neon-select" id="cfKey" type="text" placeholder="anon public key" aria-label="anon public key" autocomplete="off"><div class="save-row"><button type="button" class="btn-neon is-primary" onclick="cfConnect()">Verbinden</button></div>');
+      } else if (!cfSess) {
+        b.insertAdjacentHTML('beforeend', '<p class="cf-note">Melde dich an, damit deine Kompositionen in der Cloud gespeichert und auf allen Geräten verfügbar sind.</p><input class="neon-select" id="cfEmail" type="email" placeholder="E-Mail" aria-label="E-Mail" autocomplete="email"><input class="neon-select" id="cfPass" type="password" placeholder="Passwort" aria-label="Passwort" autocomplete="current-password"><div class="save-row"><button type="button" class="btn-neon is-primary" onclick="cfSignIn()">Anmelden</button><button type="button" class="chip-btn" onclick="cfSignUp()">Registrieren</button><button type="button" class="chip-btn" onclick="cfRecover()">Passwort vergessen</button>' + (c.fixed ? '' : '<button type="button" class="chip-btn" onclick="cfDisconnect()">Verbindung ändern</button>') + '</div>');
+        document.getElementById('cfPass').addEventListener('keydown', function(e) { if (e.key === 'Enter') cfSignIn(); });
+      } else {
+        b.insertAdjacentHTML('beforeend', '<p class="cf-note">Angemeldet als <strong id="cfWho"></strong></p><div class="save-row"><button type="button" class="btn-neon is-primary" onclick="cfSync()">Synchronisieren</button><button type="button" class="chip-btn" onclick="cfSignOut()">Abmelden</button></div>');
+        document.getElementById('cfWho').textContent = cfSess.user.email || '';
+      }
+      cfUpdateHeaderAccount();
+    }
+    window.addEventListener('DOMContentLoaded', function() { cfLoadSession(); renderAccount(); });
+
     window.addEventListener('DOMContentLoaded', bootstrap);
   </script>
 </body>
