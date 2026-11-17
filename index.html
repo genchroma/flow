@@ -18,6 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
   <style>
+#cfAuthGate{position:fixed;inset:0;z-index:2147483000;display:none;align-items:center;justify-content:center;padding:24px;background:radial-gradient(ellipse at 50% 15%,rgba(255,45,120,.13),transparent 55%),rgba(5,6,13,.99);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);overflow-y:auto}#cfAuthGate.is-visible{display:flex}.cf-auth-card{width:min(100%,430px);padding:clamp(24px,5vw,38px);border:1px solid rgba(255,45,120,.32);border-radius:24px;background:rgba(17,17,27,.98);box-shadow:0 24px 90px rgba(0,0,0,.55)}.cf-auth-brand{display:flex;align-items:center;gap:13px;margin-bottom:28px}.cf-auth-brand img{width:54px;height:54px;border-radius:14px;object-fit:cover}.cf-auth-brand strong{display:block;font-size:19px;color:#fff}.cf-auth-brand span{display:block;margin-top:3px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-surface-variant)}.cf-auth-card h1{margin:0 0 8px;font-size:25px;color:#fff}.cf-auth-card>p{margin:0 0 22px;color:var(--on-surface-variant);font-size:13px;line-height:1.65}.cf-auth-card input{width:100%;box-sizing:border-box;margin:0 0 12px;padding:14px 15px;border:1px solid var(--outline-variant);border-radius:12px;background:#0b0b13;color:#fff;font:inherit}.cf-auth-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}.cf-auth-actions button{min-height:46px}.cf-auth-actions .cf-auth-primary{grid-column:1/-1}.cf-auth-links{display:flex;justify-content:center;margin-top:18px}.cf-auth-links button{border:0;background:none;color:var(--secondary);font:inherit;font-size:12px;cursor:pointer}#cfAuthMessage{min-height:20px;margin-top:16px;font-size:12px;line-height:1.5;color:var(--secondary);text-align:center}#cfAuthMessage.is-error{color:#ff779d}@media(max-width:480px){#cfAuthGate{padding:16px}.cf-auth-card{border-radius:19px}.cf-auth-actions{grid-template-columns:1fr}.cf-auth-actions .cf-auth-primary{grid-column:auto}}
     :root {
       color-scheme: dark;
 
@@ -2827,7 +2828,8 @@
         `    }`,
         `    loop();`,
         `  ` + closeScript,
-        `</body>`,
+        `  <div id="cfAuthGate" class="is-visible" aria-hidden="false"></div>
+</body>`,
         `</html>`
       ].join('\n');
     }
@@ -3403,20 +3405,20 @@ export function ChromaFlowCanvas() {
       return [e, p];
     }
     async function cfSignIn() {
-      try { const c = cfCreds(); cfStore(await sb('/auth/v1/token?grant_type=password', { method: 'POST', body: { email: c[0], password: c[1] }, auth: false })); renderAccount(); showToast(`Angemeldet`); await cfSync(); }
-      catch (e) { showToast(e.message, true); }
+      try { const c = cfCreds(); cfStore(await sb('/auth/v1/token?grant_type=password', { method: 'POST', body: { email: c[0], password: c[1] }, auth: false })); renderAccount(); cfSetGate(false); cfAuthMessage('Anmeldung erfolgreich.'); await cfSync(); showToast('Angemeldet'); }
+      catch (e) { cfAuthMessage(e.message, true); showToast(e.message, true); }
     }
     async function cfSignUp() {
-      try {
-        const c = cfCreds(); const j = await sb('/auth/v1/signup?redirect_to=' + encodeURIComponent(location.href.split('#')[0]), { method: 'POST', body: { email: c[0], password: c[1] }, auth: false });
-        if (j && j.access_token) { cfStore(j); renderAccount(); await cfSync(); } else { showToast(`Bitte bestätige deine E-Mail und melde dich dann an`); }
-      } catch (e) { showToast(e.message, true); }
+      try { const c = cfCreds(), redirect = location.origin + location.pathname; const j = await sb('/auth/v1/signup?redirect_to=' + encodeURIComponent(redirect), { method: 'POST', body: { email: c[0], password: c[1] }, auth: false });
+        if (j && j.access_token) { cfStore(j); renderAccount(); cfSetGate(false); await cfSync(); showToast('Konto erstellt und angemeldet'); }
+        else cfAuthMessage('Bitte bestätige deine E-Mail. Nach dem Klick auf den Link wirst du automatisch zu ChromaFlow zurückgeleitet.');
+      } catch (e) { cfAuthMessage(e.message, true); showToast(e.message, true); }
     }
     async function cfRecover() {
-      const e = (document.getElementById('cfEmail').value || '').trim(); if (!e) { showToast(`Bitte zuerst die E-Mail eingeben`, true); return; }
-      try { await sb('/auth/v1/recover?redirect_to=' + encodeURIComponent(location.href.split('#')[0]), { method: 'POST', body: { email: e }, auth: false }); showToast(`Link zum Zurücksetzen wurde gesendet`); } catch (x) { showToast(x.message, true); }
+      const field = document.getElementById('cfAuthEmail') || document.getElementById('cfEmail'), e = (field && field.value || '').trim(); if (!e) { cfAuthMessage('Bitte zuerst deine E-Mail-Adresse eingeben.', true); return; }
+      try { const redirect = location.origin + location.pathname; await sb('/auth/v1/recover?redirect_to=' + encodeURIComponent(redirect), { method: 'POST', body: { email: e }, auth: false }); cfAuthMessage('Der Link zum Zurücksetzen wurde per E-Mail gesendet.'); } catch (x) { cfAuthMessage(x.message, true); }
     }
-    async function cfSignOut() { try { await sb('/auth/v1/logout', { method: 'POST' }); } catch (e) { /* ignore */ } cfStore(null); renderAccount(); showToast(`Abgemeldet`); }
+    async function cfSignOut() { try { await cfFlushSaveAll(); await sb('/auth/v1/logout', { method: 'POST' }); } catch (e) { /* ignore */ } cfStore(null); renderAccount(); cfSetGate(true); showToast('Abgemeldet'); }
     function cfConnect() {
       const u = (document.getElementById('cfUrl').value || '').trim(), k = (document.getElementById('cfKey').value || '').trim();
       if (!/^https:\/\//.test(u) || k.length < 20) { showToast(`Bitte Project URL (https://…) und anon key eingeben`, true); return; }
@@ -3556,6 +3558,13 @@ export function ChromaFlowCanvas() {
     }
     function cfUpsert(_name, _data) { cfQueueSaveAll(); }
     function cfDelete(_name) { cfQueueSaveAll(); }
+    let cfAuthRedirectError = '';
+    function cfAuthMessage(message,isError){const el=document.getElementById('cfAuthMessage');if(el){el.textContent=message||'';el.classList.toggle('is-error',!!isError);}}
+    function cfSetGate(required){const gate=document.getElementById('cfAuthGate');if(!gate)return;gate.classList.toggle('is-visible',!!required);gate.setAttribute('aria-hidden',required?'false':'true');document.body.style.overflow=required?'hidden':'';}
+    function cfAuthMode(mode){const signup=mode==='signup',title=document.getElementById('cfAuthTitle'),desc=document.getElementById('cfAuthDescription'),pass=document.getElementById('cfAuthPassword'),primary=document.getElementById('cfAuthPrimary'),secondary=document.getElementById('cfAuthSecondary');if(title)title.textContent=signup?'Konto erstellen':'Willkommen zurück';if(desc)desc.textContent=signup?'Erstelle ein Konto, um ChromaFlow zu nutzen und deine Arbeiten sicher zu speichern.':'Melde dich an, um ChromaFlow zu öffnen und deine gespeicherten Arbeiten zu laden.';if(pass)pass.autocomplete=signup?'new-password':'current-password';if(primary)primary.textContent=signup?'Konto erstellen':'Anmelden';if(secondary){secondary.textContent=signup?'Zur Anmeldung':'Konto erstellen';secondary.onclick=function(){cfAuthMode(signup?'signin':'signup');};}cfAuthMessage('');}
+    function cfHandleAuthRedirect(){const hash=new URLSearchParams(location.hash.slice(1)),access=hash.get('access_token'),refresh=hash.get('refresh_token');if(access&&refresh){cfStore({access_token:access,refresh_token:refresh,expires_in:Number(hash.get('expires_in'))||3600,user:{id:null,email:null}});try{history.replaceState(null,document.title,location.pathname+location.search);}catch(e){}return true;}const err=hash.get('error_description')||hash.get('error');if(err){try{history.replaceState(null,document.title,location.pathname+location.search);}catch(e){}cfAuthRedirectError=err;}return false;}
+    function cfRenderAuthGate(){const gate=document.getElementById('cfAuthGate');if(!gate)return;gate.innerHTML='<section class="cf-auth-card" role="dialog" aria-modal="true" aria-labelledby="cfAuthTitle"><div class="cf-auth-brand"><img src="./logo.jpg" alt="ChromaFlow Logo"><div><strong>ChromaFlow</strong><span>Generative Flow Lab</span></div></div><h1 id="cfAuthTitle">Willkommen zurück</h1><p id="cfAuthDescription">Melde dich an, um ChromaFlow zu öffnen.</p><form id="cfAuthForm"><input id="cfAuthEmail" type="email" placeholder="E-Mail-Adresse" aria-label="E-Mail-Adresse" autocomplete="email" required><input id="cfAuthPassword" type="password" placeholder="Passwort (mindestens 6 Zeichen)" aria-label="Passwort" autocomplete="current-password" minlength="6" required><div class="cf-auth-actions"><button id="cfAuthPrimary" class="btn-neon is-primary cf-auth-primary" type="submit">Anmelden</button><button id="cfAuthSecondary" class="chip-btn" type="button">Konto erstellen</button></div></form><div class="cf-auth-links"><button type="button" id="cfAuthForgot">Passwort vergessen?</button></div><div id="cfAuthMessage" role="status" aria-live="polite"></div></section>';document.getElementById('cfAuthForm').addEventListener('submit',function(e){e.preventDefault();const email=document.getElementById('cfAuthEmail').value.trim(),password=document.getElementById('cfAuthPassword').value;if(!email||password.length<6){cfAuthMessage('Bitte E-Mail und Passwort mit mindestens 6 Zeichen eingeben.',true);return;}const a=document.getElementById('cfEmail'),p=document.getElementById('cfPass');if(a)a.value=email;if(p)p.value=password;if(document.getElementById('cfAuthPrimary').textContent==='Konto erstellen')cfSignUp();else cfSignIn();});document.getElementById('cfAuthForgot').addEventListener('click',cfRecover);cfAuthMode('signin');}
+    async function cfInitAuth(){cfLoadSession();const redirected=cfHandleAuthRedirect();if(cfSess){try{const user=await sb('/auth/v1/user');cfSess.user={id:user.id,email:user.email};localStorage.setItem('chromaflow:session',JSON.stringify(cfSess));renderAccount();cfSetGate(false);await cfSync();if(redirected)showToast('E-Mail erfolgreich bestätigt. Du bist jetzt angemeldet.');return;}catch(e){cfStore(null);}}renderAccount();cfSetGate(true);if(cfAuthRedirectError)cfAuthMessage('Die E-Mail-Bestätigung ist fehlgeschlagen: '+cfAuthRedirectError,true);else if(redirected)cfAuthMessage('Bestätigungslink erkannt. Bitte melde dich an.');}
     function cfUpdateHeaderAccount() {
       const label = document.getElementById('cfHeaderAccountLabel');
       const button = document.getElementById('cfHeaderAccount');
@@ -3589,7 +3598,7 @@ export function ChromaFlowCanvas() {
       }
       cfUpdateHeaderAccount();
     }
-    window.addEventListener('DOMContentLoaded', function() { cfLoadSession(); renderAccount(); });
+    window.addEventListener('DOMContentLoaded', function() { cfRenderAuthGate(); cfInitAuth(); renderAccount(); });
 
     window.addEventListener('DOMContentLoaded', bootstrap);
   </script>
