@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <meta name="theme-color" content="#05060d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="ChromaFlow">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="artifact-type" content="tool">
   <meta name="design-style" content="neon_noir">
   <title>ChromaFlow — Generative Flow Lab</title>
-  <link rel="icon" href="data:image/jpeg;base64,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">
+  <link rel="icon" type="image/png" sizes="512x512" href="./assets/chromaflow-icon-512.png">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
   <style>
@@ -296,7 +301,7 @@
     /* Main Workspace Grid */
     .workspace {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 410px;
+      grid-template-columns: minmax(0, 1fr) var(--panel-w, 410px);
       flex: 1;
       min-height: 0;
       position: relative;
@@ -1215,6 +1220,27 @@
     .hud-telemetry{transition:opacity .6s var(--ease-out)}
     .canvas-stage.is-idle .hud-telemetry{opacity:0}
     .toast-banner{border-radius:999px;padding:var(--space-sm) var(--space-lg)}
+    .save-row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+    .save-row input{flex:1;min-width:0}
+    .save-row label.chip-btn{cursor:pointer}
+    .save-list{display:flex;flex-direction:column;gap:.375rem}
+    .save-list:empty::before{content:"Noch nichts gespeichert";color:var(--on-surface-variant);font-size:.8125rem}
+    .save-item{display:flex;gap:.375rem}
+    .save-item .preset-btn{flex:1;text-align:left}
+    .save-item .save-del{flex:none;padding:0 .75rem}
+    .control-panel{position:relative}
+    .sheet-handle-bar{touch-action:none;user-select:none;cursor:grab}
+    .sheet-grip{width:48px;height:5px;transition:background .2s,width .2s}
+    .sheet-handle-bar:hover .sheet-grip,.workspace.sheet-dragging .sheet-grip{background:var(--secondary);width:68px}
+    .workspace.sheet-dragging{cursor:grabbing}
+    .workspace.sheet-dragging .control-panel{transition:none!important}
+    .panel-resizer{position:absolute;left:0;top:0;bottom:0;width:10px;cursor:col-resize;z-index:20;touch-action:none}
+    .panel-resizer::after{content:"";position:absolute;left:3px;top:50%;width:4px;height:56px;margin-top:-28px;border-radius:2px;background:var(--outline);transition:background .2s,height .2s}
+    .panel-resizer:hover::after,.panel-resizer.is-dragging::after,.panel-resizer:focus-visible::after{background:var(--secondary);height:80px}
+    body.is-resizing{cursor:col-resize;user-select:none}
+    @media (max-width:900px){.panel-resizer{display:none}}
+    .cf-box{display:flex;flex-direction:column;gap:.5rem}
+    .cf-note{margin:0;font-size:.8125rem;color:var(--on-surface-variant)}
   </style>
 </head>
 <body>
@@ -1318,6 +1344,7 @@
 
       <!-- Glassmorphism Control Panel / Mobile Bottom-Sheet -->
       <aside class="control-panel" id="controlPanel" aria-label="Steuerung und Parameter">
+        <div class="panel-resizer" id="panelResizer" role="separator" aria-orientation="vertical" aria-label="Breite des Panels ändern (Pfeiltasten, Doppelklick zum Zurücksetzen)" tabindex="0"></div>
         <!-- Mobile Bottom-Sheet Drag/Tap Handle -->
         <div class="sheet-handle-bar" onclick="cycleMobileSheet()" role="button" tabindex="0" aria-label="Steuerungs-Panel ein- oder ausklappen">
           <span class="control-label" id="mobileSheetLabel">Parameter &amp; Motoren</span>
@@ -1356,6 +1383,18 @@
 
             <div class="neon-panel"><span class="control-label">Looks: fertige Kompositionen</span><div class="preset-grid" id="lookGrid"></div><span class="color-hex-label">Leertaste Pause · R neu säen · Z Zufall · S PNG · 1–4 Motor</span>
             <button type="button" class="chip-btn" onclick="resetAll()">Standard wiederherstellen</button></div>
+
+            <div class="neon-panel">
+              <span class="control-label">Konto &amp; Cloud</span>
+              <div class="cf-box" id="cfAccount"></div>
+            </div>
+
+            <div class="neon-panel">
+              <span class="control-label">Meine Kompositionen</span>
+              <div class="save-row"><input type="text" class="neon-select" id="saveName" placeholder="Name der Komposition" maxlength="40" aria-label="Name der Komposition"><button type="button" class="btn-neon is-primary" onclick="saveComposition()">Speichern</button></div>
+              <div class="save-list" id="saveList"></div>
+              <div class="save-row"><button type="button" class="chip-btn" onclick="exportCompositions()">Als Datei sichern</button><label class="chip-btn" for="importFile">Datei laden</label><input type="file" id="importFile" accept=".json,application/json" hidden></div>
+            </div>
 
             <div class="engine-grid">
               <button type="button" class="engine-card is-active" id="engVector" onclick="setEngine('vector_field')">
@@ -1523,7 +1562,6 @@
                 <label class="control-label" for="selectColorMapping">Farbzuweisung (Color Mapping)</label>
                 <select class="neon-select" id="selectColorMapping" onchange="setColorMapping(this.value)">
                   <option value="speed">Nach Geschwindigkeit</option>
-                  <option value="position">Nach Position (Winkel/Raum)</option>
                   <option value="lifetime">Nach Lebensdauer</option>
                   <option value="noise">Nach Perlin-Rauschen</option>
                 </select>
@@ -2022,10 +2060,6 @@
       let t = 0;
       if (state.colorMapping === 'speed') {
         t = Math.min(0.999, speedMag / Math.max(1, state.speed * 1.8));
-      } else if (state.colorMapping === 'position') {
-        const dx = px[i] - canvasW * 0.5;
-        const dy = py[i] - canvasH * 0.5;
-        t = (Math.atan2(dy, dx) + Math.PI) / (Math.PI * 2);
       } else if (state.colorMapping === 'lifetime') {
         t = Math.min(0.999, age[i] / Math.max(1, maxAge[i]));
       } else {
@@ -2385,7 +2419,9 @@
     }
 
     let mobileSheetState = 0; // 0 = default, 1 = expanded, 2 = minimized
+    let sheetDragged = false;
     function cycleMobileSheet() {
+      if (sheetDragged) { sheetDragged = false; return; }
       const ws = document.getElementById('workspace');
       const lbl = document.getElementById('mobileSheetLabel');
       if (!ws) return;
@@ -2670,7 +2706,7 @@
       const engines = ['vector_field', 'lorenz', 'parametric', 'quantum_nodes'];
       const shapes = ['dots', 'discs', 'lines', 'squares'];
       const blends = ['lighter', 'screen'];
-      const mappings = ['speed', 'position', 'lifetime', 'noise'];
+      const mappings = ['speed', 'lifetime', 'noise'];
 
       const randPreset = COLOR_PRESETS[Math.floor(Math.random() * COLOR_PRESETS.length)];
       applyColorPreset(randPreset.id);
@@ -3089,6 +3125,7 @@ export function ChromaFlowCanvas() {
       }
 
       try { const sv = JSON.parse(localStorage.getItem('chromaflow:v2') || 'null'); if (sv) Object.keys(sv).forEach(function(k) { if (k in state) state[k] = sv[k]; }); } catch (e) { /* ignore */ }
+      if (state.colorMapping === 'position') state.colorMapping = 'speed';
       resizeCanvases();
       syncAllControlsFromState();
       initAllParticles();
@@ -3189,6 +3226,258 @@ export function ChromaFlowCanvas() {
     }
     window.addEventListener('DOMContentLoaded', function() { idleLoop(); updateRangeFills(); setInterval(updateRangeFills, 300); });
 
+    /* ===== v4: Kompositionen speichern & laden ===== */
+    const SAVE_KEYS = ['engine','touchMode','colorCount','colors','activePreset','blendMode','colorMapping','particleCount','speed','acceleration','friction','particleSize','sizeVariance','pulseAmount','noiseScale','noiseFreq','maxLifetime','gravityStrength','interactionRadius','trailDecay','particleShape','glowIntensity','curlStrength','lorenzRho','lorenzRotSpeed','lissajousFx','lissajousFy','quantumSpin','nodes'];
+    const SAVE_ENGINES = ['vector_field', 'lorenz', 'parametric', 'quantum_nodes'];
+    function readSaves() { try { const a = JSON.parse(localStorage.getItem('chromaflow:saves') || '[]'); return Array.isArray(a) ? a : []; } catch (e) { return []; } }
+    function writeSaves(list) { try { localStorage.setItem('chromaflow:saves', JSON.stringify(list)); return true; } catch (e) { showToast(`Speichern im Browser nicht möglich`, true); return false; } }
+    function snapshotState() { const o = {}; SAVE_KEYS.forEach(function(k) { if (k in state) o[k] = JSON.parse(JSON.stringify(state[k])); }); return o; }
+    function cleanData(d) {
+      if (!d || typeof d !== 'object' || !SAVE_ENGINES.includes(d.engine)) return null;
+      const o = {}; SAVE_KEYS.forEach(function(k) { if (k in d && k in state && typeof d[k] === typeof state[k]) o[k] = d[k]; });
+      if (o.colorMapping === 'position') o.colorMapping = 'speed';
+      return o;
+    }
+    function renderSaves() {
+      const box = document.getElementById('saveList'); if (!box) return;
+      box.textContent = '';
+      readSaves().forEach(function(it) {
+        const row = document.createElement('div'); row.className = 'save-item';
+        const load = document.createElement('button'); load.type = 'button'; load.className = 'preset-btn'; load.textContent = it.name; load.title = 'Laden';
+        load.onclick = function() { loadComposition(it.id); };
+        const del = document.createElement('button'); del.type = 'button'; del.className = 'chip-btn save-del'; del.textContent = '×'; del.title = 'Löschen'; del.setAttribute('aria-label', 'Löschen: ' + it.name);
+        del.onclick = function() { writeSaves(readSaves().filter(function(x) { return x.id !== it.id; })); renderSaves(); cfDelete(it.name); };
+        row.appendChild(load); row.appendChild(del); box.appendChild(row);
+      });
+    }
+    function saveComposition() {
+      const inp = document.getElementById('saveName'); const list = readSaves();
+      const name = (inp.value || '').trim() || `Komposition ${list.length + 1}`;
+      const data = snapshotState(); const old = list.find(function(x) { return x.name === name; });
+      if (old) { old.data = data; old.ts = Date.now(); } else { list.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), name: name, data: data, ts: Date.now() }); }
+      if (writeSaves(list)) { inp.value = ''; renderSaves(); cfUpsert(name, data); showToast(old ? `„${name}“ überschrieben` : `„${name}“ gespeichert`); }
+    }
+    function loadComposition(id) {
+      const it = readSaves().find(function(x) { return x.id === id; }); const d = it && cleanData(it.data);
+      if (!d) { showToast(`Eintrag konnte nicht geladen werden`, true); return; }
+      Object.assign(state, d); seedNoise(); syncAllControlsFromState(); clearCanvasFlag = true; saveStateDebounced(); showToast(`„${it.name}“ geladen`);
+    }
+    function exportCompositions() {
+      let items = readSaves(); if (!items.length) items = [{ name: 'Aktuelle Komposition', data: snapshotState() }];
+      const blob = new Blob([JSON.stringify({ app: 'chromaflow', version: 2, items: items }, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'chromaflow-kompositionen.json';
+      document.body.appendChild(a); a.click(); a.remove(); setTimeout(function() { URL.revokeObjectURL(a.href); }, 1000);
+    }
+    function importCompositions(file) {
+      const r = new FileReader();
+      r.onload = function() {
+        try {
+          const j = JSON.parse(r.result); const src = Array.isArray(j.items) ? j.items : [{ name: 'Importiert', data: j }];
+          const list = readSaves(); let n = 0;
+          src.forEach(function(it) {
+            const d = cleanData(it && it.data); if (!d) return;
+            const base = String((it && it.name) || 'Importiert').slice(0, 34);
+            let name = base, k = 2;
+            while (list.some(function(x) { return x.name === name; })) { name = base + ' (' + k++ + ')'; }
+            list.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6) + n, name: name, data: d, ts: Date.now() });
+            n++;
+          });
+          if (!n) throw new Error('leer');
+          writeSaves(list); renderSaves(); cfSync(); showToast(n === 1 ? `Als neue Komposition gespeichert` : `${n} neue Kompositionen gespeichert`);
+        } catch (e) { showToast(`Datei ist keine gültige ChromaFlow-Sicherung`, true); }
+      };
+      r.readAsText(file);
+    }
+    window.addEventListener('DOMContentLoaded', function() {
+      renderSaves();
+      const f = document.getElementById('importFile');
+      if (f) f.addEventListener('change', function() { if (f.files[0]) importCompositions(f.files[0]); f.value = ''; });
+    });
+
+    /* ===== v5: Griffe wirklich ziehbar ===== */
+    window.addEventListener('DOMContentLoaded', function() {
+      const ws = document.getElementById('workspace');
+      const panel = document.querySelector('.control-panel');
+      const bar = document.querySelector('.sheet-handle-bar');
+      const R = document.getElementById('panelResizer');
+      if (!ws || !panel) return;
+      // Mobil: Griff ziehen, rastet bei klein / normal / groß ein
+      if (bar) {
+        let dragging = false, moved = false, startY = 0, startH = 0;
+        bar.addEventListener('pointerdown', function(e) {
+          if (e.button > 0) return;
+          dragging = true; moved = false; startY = e.clientY; startH = panel.getBoundingClientRect().height;
+          bar.setPointerCapture(e.pointerId);
+        });
+        bar.addEventListener('pointermove', function(e) {
+          if (!dragging) return;
+          const dy = startY - e.clientY;
+          if (!moved) {
+            if (Math.abs(dy) < 6) return;
+            moved = true; ws.classList.remove('sheet-expanded', 'sheet-minimized'); ws.classList.add('sheet-dragging');
+          }
+          panel.style.maxHeight = 'none';
+          panel.style.height = Math.max(56, Math.min(window.innerHeight * 0.85, startH + dy)) + 'px';
+        });
+        const end = function() {
+          if (!dragging) return; dragging = false;
+          if (!moved) return;
+          const vh = window.innerHeight, h = panel.getBoundingClientRect().height;
+          const targets = [[2, 56], [0, Math.min(520, vh * 0.48)], [1, vh * 0.7]];
+          targets.sort(function(a, b) { return Math.abs(a[1] - h) - Math.abs(b[1] - h); });
+          ws.classList.remove('sheet-dragging');
+          mobileSheetState = (targets[0][0] + 2) % 3; cycleMobileSheet();
+          panel.style.height = ''; panel.style.maxHeight = '';
+          sheetDragged = true; setTimeout(function() { sheetDragged = false; }, 80);
+        };
+        bar.addEventListener('pointerup', end); bar.addEventListener('pointercancel', end);
+      }
+      // Desktop: Griff am linken Rand zieht die Panelbreite
+      if (R) {
+        const setW = function(w, save) {
+          w = Math.max(320, Math.min(Math.min(720, window.innerWidth * 0.6), w));
+          ws.style.setProperty('--panel-w', w + 'px');
+          if (save) { try { localStorage.setItem('chromaflow:panelw', String(Math.round(w))); } catch (e) { /* ignore */ } }
+        };
+        try { const w = parseFloat(localStorage.getItem('chromaflow:panelw')); if (w) setW(w, false); } catch (e) { /* ignore */ }
+        let drag = false;
+        R.addEventListener('pointerdown', function(e) { drag = true; R.setPointerCapture(e.pointerId); R.classList.add('is-dragging'); document.body.classList.add('is-resizing'); });
+        R.addEventListener('pointermove', function(e) { if (drag) setW(ws.getBoundingClientRect().right - e.clientX, true); });
+        const stop = function() { if (!drag) return; drag = false; R.classList.remove('is-dragging'); document.body.classList.remove('is-resizing'); resizeCanvases(); };
+        R.addEventListener('pointerup', stop); R.addEventListener('pointercancel', stop);
+        R.addEventListener('dblclick', function() { ws.style.removeProperty('--panel-w'); try { localStorage.removeItem('chromaflow:panelw'); } catch (e) { /* ignore */ } resizeCanvases(); });
+        R.addEventListener('keydown', function(e) {
+          if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return; e.preventDefault();
+          setW(panel.getBoundingClientRect().width + (e.key === 'ArrowLeft' ? 24 : -24), true); resizeCanvases();
+        });
+      }
+    });
+
+    /* ===== v7: Supabase-Konto & vollständige Cloud-Synchronisierung ===== */
+    // Publishable key: darf im Browser verwendet werden. Niemals einen service_role/secret key eintragen.
+    const CF_SUPABASE = Object.freeze({
+      url: 'https://zrtfcnmgvsppfdfhlcdp.supabase.co',
+      key: 'sb_publishable_seTvk_0R_F-DyxUSuauBsA_IFDRilMn'
+    });
+    let cfSess = null, cfCloudSaveTimer = null, cfCloudSaving = false, cfCloudSaveAgain = false;
+    function cfLoadSession() {
+      try { const saved = JSON.parse(localStorage.getItem('chromaflow:session') || 'null'); cfSess = saved && saved.access_token && saved.refresh_token && saved.user && saved.user.id ? saved : null; }
+      catch (e) { cfSess = null; }
+    }
+    function cfStore(j) {
+      try {
+        if (j && j.access_token && j.refresh_token && j.user && j.user.id) {
+          cfSess = { access_token:j.access_token, refresh_token:j.refresh_token, expires_at:j.expires_at || Math.floor(Date.now()/1000)+(j.expires_in||3600), user:{id:j.user.id,email:j.user.email} };
+          localStorage.setItem('chromaflow:session',JSON.stringify(cfSess));
+        } else { cfSess=null; localStorage.removeItem('chromaflow:session'); }
+      } catch(e) { /* storage unavailable */ }
+    }
+    function cfBaseUrl(){ return window.location.origin+window.location.pathname; }
+    async function cfRefresh(){
+      if(!cfSess||!cfSess.refresh_token) throw new Error('Sitzung abgelaufen. Bitte erneut anmelden.');
+      const r=await fetch(CF_SUPABASE.url+'/auth/v1/token?grant_type=refresh_token',{method:'POST',headers:{apikey:CF_SUPABASE.key,'Content-Type':'application/json'},body:JSON.stringify({refresh_token:cfSess.refresh_token})});
+      const j=await r.json().catch(()=>({}));
+      if(!r.ok||!j.access_token){cfStore(null);renderAccount();throw new Error(j.msg||j.error_description||'Sitzung abgelaufen. Bitte erneut anmelden.');}
+      cfStore(j);
+    }
+    async function sb(path,opt){
+      opt=opt||{};let token=CF_SUPABASE.key;
+      if(opt.auth!==false&&cfSess){if(!cfSess.expires_at||cfSess.expires_at-60<Date.now()/1000)await cfRefresh();if(!cfSess)throw new Error('Bitte erneut anmelden.');token=cfSess.access_token;}
+      const headers=Object.assign({apikey:CF_SUPABASE.key,Authorization:'Bearer '+token,'Content-Type':'application/json'},opt.headers||{});
+      const r=await fetch(CF_SUPABASE.url+path,{method:opt.method||'GET',headers:headers,body:opt.body!==undefined?JSON.stringify(opt.body):undefined});
+      const t=await r.text();let j=null;try{j=t?JSON.parse(t):null;}catch(e){}
+      if(!r.ok)throw new Error((j&&(j.msg||j.error_description||j.message||j.error))||('Supabase-Fehler '+r.status));
+      return j;
+    }
+    function cfCreds(){
+      const e=document.getElementById('cfEmail'),p=document.getElementById('cfPass');
+      const email=e?(e.value||'').trim():'',password=p?(p.value||''):'';
+      if(!email||password.length<6)throw new Error('Bitte E-Mail und ein Passwort mit mindestens 6 Zeichen eingeben.');
+      return [email,password];
+    }
+    async function cfSignIn(){
+      try{const c=cfCreds(),j=await sb('/auth/v1/token?grant_type=password',{method:'POST',auth:false,body:{email:c[0],password:c[1]}});cfStore(j);renderAccount();await cfSync({showMessage:true});}
+      catch(e){showToast(e.message,true);}
+    }
+    async function cfSignUp(){
+      try{const c=cfCreds(),j=await sb('/auth/v1/signup?redirect_to='+encodeURIComponent(cfBaseUrl()),{method:'POST',auth:false,body:{email:c[0],password:c[1]}});
+        if(j&&j.access_token){cfStore(j);renderAccount();await cfSync({showMessage:true});}
+        else showToast('Registrierung erstellt. Bitte bestätige zuerst deine E-Mail und melde dich danach an.');
+      }catch(e){showToast(e.message,true);}
+    }
+    async function cfRecover(){
+      const e=document.getElementById('cfEmail'),email=e?(e.value||'').trim():'';
+      if(!email){showToast('Bitte zuerst deine E-Mail-Adresse eingeben.',true);return;}
+      try{await sb('/auth/v1/recover?redirect_to='+encodeURIComponent(cfBaseUrl()),{method:'POST',auth:false,body:{email}});showToast('Falls ein Konto existiert, wurde ein Link zum Zurücksetzen gesendet.');}
+      catch(x){showToast(x.message,true);}
+    }
+    async function cfSignOut(){
+      if(cfCloudSaveTimer)clearTimeout(cfCloudSaveTimer);
+      try{if(cfSess)await sb('/auth/v1/logout',{method:'POST'});}catch(e){}
+      cfStore(null);cfCloudSaveAgain=false;renderAccount();showToast('Abgemeldet. Deine Cloud-Daten bleiben gespeichert.');
+    }
+    function cfMarkLocalChange(){try{localStorage.setItem('chromaflow:localUpdatedAt',String(Date.now()));}catch(e){}}
+    function cfLocalChangeTime(){
+      let stamp=0;try{stamp=Number(localStorage.getItem('chromaflow:localUpdatedAt')||0);}catch(e){}
+      try{readSaves().forEach(x=>{stamp=Math.max(stamp,Number(x.ts)||0);});}catch(e){}
+      return stamp;
+    }
+    function cfCollectCloudData(){
+      let panelWidth=null;try{panelWidth=localStorage.getItem('chromaflow:panelw');}catch(e){}
+      return {version:1,state:snapshotState(),compositions:readSaves(),preferences:{panelWidth:panelWidth,autopilotOn:!!autopilotOn}};
+    }
+    async function cfPersistCloudNow(){
+      if(!cfSess)return;
+      const timestamp=new Date().toISOString();
+      await sb('/rest/v1/user_data?on_conflict=user_id',{method:'POST',headers:{Prefer:'resolution=merge-duplicates,return=minimal'},body:{user_id:cfSess.user.id,data:cfCollectCloudData(),updated_at:timestamp}});
+      try{localStorage.setItem('chromaflow:localUpdatedAt',String(Date.parse(timestamp)));}catch(e){}
+    }
+    function cfScheduleCloudSave(){
+      if(!cfSess)return;if(cfCloudSaveTimer)clearTimeout(cfCloudSaveTimer);
+      cfCloudSaveTimer=setTimeout(async function(){
+        cfCloudSaveTimer=null;if(!cfSess)return;if(cfCloudSaving){cfCloudSaveAgain=true;return;}cfCloudSaving=true;
+        try{await cfPersistCloudNow();}catch(e){showToast('Cloud-Speichern fehlgeschlagen: '+e.message,true);}
+        finally{cfCloudSaving=false;if(cfCloudSaveAgain){cfCloudSaveAgain=false;cfScheduleCloudSave();}}
+      },850);
+    }
+    function cfApplyCloudData(d,ts){
+      if(!d||typeof d!=='object')return;
+      const remoteState=cleanData(d.state);
+      if(remoteState){Object.assign(state,remoteState);try{localStorage.setItem('chromaflow:v2',JSON.stringify(snapshotState()));}catch(e){}}
+      if(Array.isArray(d.compositions)){
+        const items=d.compositions.map((x,i)=>{const cleaned=cleanData(x&&x.data);if(!cleaned)return null;return{id:String(x.id||('cloud-'+i)),name:String(x.name||('Komposition '+(i+1))).slice(0,40),data:cleaned,ts:Number(x.ts)||ts||Date.now()};}).filter(Boolean);
+        try{localStorage.setItem('chromaflow:saves',JSON.stringify(items));}catch(e){}
+      }
+      const p=d.preferences&&typeof d.preferences==='object'?d.preferences:{};
+      if(p.panelWidth){const w=Number(p.panelWidth);if(Number.isFinite(w)&&w>=320&&w<=1200){try{localStorage.setItem('chromaflow:panelw',String(Math.round(w)));}catch(e){}const ws=document.getElementById('workspace');if(ws)ws.style.setProperty('--panel-w',Math.round(w)+'px');}}
+      if(typeof p.autopilotOn==='boolean'){autopilotOn=p.autopilotOn;const b=document.getElementById('btnAuto');if(b)b.classList.toggle('active-mode',autopilotOn);}
+      if(remoteState){seedNoise();syncAllControlsFromState();clearCanvasFlag=true;initAllParticles();}
+      renderSaves();try{localStorage.setItem('chromaflow:localUpdatedAt',String(ts||Date.now()));}catch(e){}
+    }
+    async function cfSync(options){
+      if(!cfSess)return;options=options||{};
+      try{
+        const rows=await sb('/rest/v1/user_data?select=data,updated_at&user_id=eq.'+encodeURIComponent(cfSess.user.id)+'&limit=1');
+        const row=Array.isArray(rows)&&rows.length?rows[0]:null;
+        if(!row){await cfPersistCloudNow();if(options.showMessage)showToast('Konto verbunden. Deine bisherigen Einstellungen und Kompositionen wurden in der Cloud gespeichert.');return;}
+        const cloudTime=Date.parse(row.updated_at)||0,localTime=cfLocalChangeTime();
+        if(localTime>cloudTime+1000){await cfPersistCloudNow();if(options.showMessage)showToast('Deine aktuellen lokalen Daten wurden mit der Cloud synchronisiert.');}
+        else{cfApplyCloudData(row.data,cloudTime);if(options.showMessage)showToast('Cloud-Daten geladen und synchronisiert.');}
+      }catch(e){showToast('Synchronisieren fehlgeschlagen: '+e.message,true);}
+    }
+    function cfUpsert(){cfScheduleCloudSave();}
+    function cfDelete(){cfScheduleCloudSave();}
+    function renderAccount(){
+      const b=document.getElementById('cfAccount');if(!b)return;b.textContent='';
+      if(!cfSess){
+        b.insertAdjacentHTML('beforeend','<p class="cf-note">Melde dich mit deinem Konto an. Deine Einstellungen und gespeicherten Kompositionen werden automatisch über Supabase gesichert und auf deinen Geräten synchronisiert.</p><input class="neon-select" id="cfEmail" type="email" placeholder="E-Mail-Adresse" aria-label="E-Mail-Adresse" autocomplete="email" inputmode="email"><input class="neon-select" id="cfPass" type="password" placeholder="Passwort (mind. 6 Zeichen)" aria-label="Passwort" autocomplete="current-password" minlength="6"><div class="save-row"><button type="button" class="btn-neon is-primary" onclick="cfSignIn()">Anmelden</button><button type="button" class="chip-btn" onclick="cfSignUp()">Registrieren</button><button type="button" class="chip-btn" onclick="cfRecover()">Passwort vergessen</button></div><p class="cf-note">Bei einer neuen Registrierung musst du gegebenenfalls zuerst deine E-Mail-Adresse bestätigen.</p>');
+        const p=document.getElementById('cfPass');if(p)p.addEventListener('keydown',e=>{if(e.key==='Enter')cfSignIn();});
+      }else{
+        b.insertAdjacentHTML('beforeend','<p class="cf-note">Angemeldet als <strong id="cfWho"></strong><br>Automatische Cloud-Sicherung ist aktiv.</p><div class="save-row"><button type="button" class="btn-neon is-primary" onclick="cfSync({showMessage:true})">Jetzt synchronisieren</button><button type="button" class="chip-btn" onclick="cfSignOut()">Abmelden</button></div>');
+        const w=document.getElementById('cfWho');if(w)w.textContent=String(cfSess.user.email||'');
+      }
+    }
+    window.addEventListener('DOMContentLoaded',async function(){cfLoadSession();renderAccount();await bootstrap();if(cfSess){renderAccount();await cfSync({showMessage:false});}});
     window.addEventListener('DOMContentLoaded', bootstrap);
   </script>
 </body>
